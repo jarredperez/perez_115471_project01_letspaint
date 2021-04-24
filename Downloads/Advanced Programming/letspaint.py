@@ -20,6 +20,8 @@ def aRectangle(win):
         rect.setFill('brown')
     elif color1 == "g":
         rect.setFill('green')
+    elif color1 == "p":
+        rect.setFill('pink')
     pass
 
 def aLine(win):
@@ -42,6 +44,8 @@ def aLine(win):
         l.setOutline('brown')
     elif color1 == "g":
         l.setFill('green')
+    elif color1 == "p":
+        l.setFill('pink')
     pass
 
 def aCircle(win):
@@ -68,6 +72,8 @@ def aCircle(win):
         circ.setFill('brown')
     elif color1 == "g":
         circ.setFill('green')
+    elif color1 == "p":
+        circ.setFill('pink')
     radi_m.undraw()
     pass
 
@@ -92,6 +98,8 @@ def aPolygon(win):
         poly.setFill('brown')
     elif color1 == "g":
         poly.setFill('green')
+    elif color1 == "p":
+        poly.setFill('pink')
     pass
 
 def main():
@@ -104,7 +112,7 @@ def main():
         message1.draw(win)
         message2 = Text(Point(500,  45), 'After selecting the figure you wish to draw, use your mouse to click on the points where you wish to draw')
         message2.draw(win)
-        message_c = Text(Point(500, 60), 'Then, press w for White, k for Black, b for Blue, r for Red, y for Yellow, n for Brown, and g for Green')
+        message_c = Text(Point(500, 60), 'Then, press w for White, k for Black, b for Blue, r for Red, y for Yellow, n for Brown, g for Green, and p for pink')
         message_c.draw(win)
         option = win.getKey() 
         if option == "l":
