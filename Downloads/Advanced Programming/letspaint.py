@@ -4,6 +4,7 @@ def aRectangle(win):
     c1 = win.getMouse()
     c2 = win.getMouse()
     rect = Rectangle(c1, c2)
+    rect.draw(win)
     color1 = win.getKey()
     if color1 == "w":
         rect.setFill('white')
@@ -19,13 +20,13 @@ def aRectangle(win):
         rect.setFill('brown')
     elif color1 == "g":
         rect.setFill('green')
-    rect.draw(win)
     pass
 
 def aLine(win):
     c1 = win.getMouse()
     c2 = win.getMouse()
     l = Line(c1, c2)
+    l.draw(win)
     color1 = win.getKey()
     if color1 == "w":
         l.setOutline('white')
@@ -41,22 +42,25 @@ def aLine(win):
         l.setOutline('brown')
     elif color1 == "g":
         l.setFill('green')
-    l.draw(win)
     pass
 
 def aCircle(win):
     c1 = win.getMouse()
-    c2 = win.getMouse()
-    c3 = Entry(Point(500, 85), 3)
-    circ = Circle((c1, c2), c3)  
+    x1 = c1.getX()
+    y1 = c1.getY()
+    radi_m = Text(Point(500, 85), 'Enter the radius of the circle on your terminal and hit enter')
+    radi_m.draw(win)
+    radius = int(input('Enter the radius of the circle'))
+    circ = Circle(Point(x1, y1), radius)
+    circ.draw(win)
     color1 = win.getKey()
-    if color1 == "w":
+    if color1 == "w":   
         circ.setFill('white')
     elif color1 == "k":
         circ.setFill('black')
     elif color1 == "b":
         circ.setFill('blue')
-    elif color1 == "r":
+    elif color1 == "r": 
         circ.setFill('red')
     elif color1 == "y":
         circ.setFill('yellow')
@@ -64,7 +68,7 @@ def aCircle(win):
         circ.setFill('brown')
     elif color1 == "g":
         circ.setFill('green')
-    circ.draw(win)
+    radi_m.undraw()
     pass
 
 def aPolygon(win):
@@ -72,6 +76,7 @@ def aPolygon(win):
     c2 = win.getMouse()
     c3 = win.getMouse()
     poly = Polygon(c1, c2, c3)  
+    poly.draw(win)
     color1 = win.getKey()
     if color1 == "w":
         poly.setFill('white')
@@ -87,7 +92,6 @@ def aPolygon(win):
         poly.setFill('brown')
     elif color1 == "g":
         poly.setFill('green')
-    poly.draw(win)
     pass
 
 def main():
@@ -118,8 +122,10 @@ def main():
              condition = True
         elif goodbye_k == "0":
              win.close()
-    
+        goodbye_m.undraw()
     pass
 
-main()
+if __name__ == '__main__':
+    main()
+
  
