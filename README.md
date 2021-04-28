@@ -16,3 +16,7 @@ Finally, you will be asked if you wish to continue drawing or if you wish the ex
 
 This game incorporates functions and loop statements. This helps the user experience in selecting from the options and for the program to decide what to do next. 
 The design and algorithm of this game is based on these functions and loop statements to step by step create drawings on the graphical window in a simple and staight forward manner. 
+
+I got inspiration for this project by watching this link and the games found in it: http://www.grantjenks.com/docs/freegames/ 
+
+I decided to do a painting game since it implements the topics learned in python class, but taking them to the next level. 
