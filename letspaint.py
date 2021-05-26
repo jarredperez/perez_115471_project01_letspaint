@@ -6,26 +6,30 @@ win.setBackground('light gray')
 class ARectangle():
         def __init__(self, c1, c2):
             self.c1 = c1
-            self.draw(win)
+            self.c2 = c2
     
+        def drawing(self, w):
+            self.s = Rectangle(self.c1, self.c2)
+            self.s.draw(w)
+
         def color(self):
             key = win.getKey()
             if key == "w":
-                self.setFill('white')
+                self.s.setFill('white')
             elif key == "k":
-                self.setFill('black')
+                self.s.setFill('black')
             elif key == "b":
-                self.setFill('blue')
+                self.s.setFill('blue')
             elif key == "r":
-                self.setFill('red')
+                self.s.setFill('red')
             elif key == "y":
-                self.setFill('yellow')
+                self.s.setFill('yellow')
             elif key == "n":
-                self.setFill('brown')
+                self.s.setFill('brown')
             elif key == "g":
-                self.setFill('green')
+                self.s.setFill('green')
             elif key == "p":
-                self.setFill('pink')
+                self.s.setFill('pink')
             pass
 
 class ALine():
@@ -33,29 +37,28 @@ class ALine():
             self.c1 = c1
             self.c2 = c2
             
-
         def drawing(self, w):
-            self.testing = Line(self.c1, self.c2)
-            self.testing.draw(w)
+            self.l = Line(self.c1, self.c2)
+            self.l.draw(w)
             
         def color(self):
             key = win.getKey()
             if key == "w":
-                self.testing.setOutline('white')
+                self.l.setOutline('white')
             elif key == "k":
-                self.testing.setOutline('black')
+                self.l.setOutline('black')
             elif key == "b":
-                self.testing.setOutline('blue')
+                self.l.setOutline('blue')
             elif key == "r":
-                self.testing.setOutline('red')
+                self.l.setOutline('red')
             elif key == "y":
-                self.testing.setOutline('yellow')
+                self.l.setOutline('yellow')
             elif key == "n":
-                self.testing.setOutline('brown')
+                self.l.setOutline('brown')
             elif key == "g":
-                self.testing.setOutline('green')
+                self.l.setOutline('green')
             elif key == "p":
-                self.testing.setOutline('pink')
+                self.l.setOutline('pink')
             pass
 
 def ACircle(win):
@@ -130,7 +133,11 @@ def main():
             line.drawing(win)
             line.color()
         elif option == "s":
-             aRectangle(win)
+             c1 = win.getMouse()
+             c2 = win.getMouse()
+             rectangle = ARectangle(c1, c2)
+             rectangle.drawing(win)
+             rectangle.color()
         elif option == "c":
              aCircle(win)
         elif option == "p":
