@@ -92,31 +92,36 @@ def ACircle(win):
 
 class APolygon():
         def __init__(self, c1, c2, c3):
-            self.Polygon(c1, c2, c3)
-            self.draw(win)
-    
+            self.c1 = c1
+            self.c2 = c2
+            self.c3 = c3
+
+        def drawing(self, w):
+            self.p = Polygon(self.c1, self.c2, self.c3)
+            self.p.draw(w)
+            
         def color(self):
             key = win.getKey()
             if key == "w":
-                self.setFill('white')
+                self.p.setFill('white')
             elif key == "k":
-                self.setFill('black')
+                self.p.setFill('black')
             elif key == "b":
-                self.setFill('blue')
+                self.p.setFill('blue')
             elif key == "r":
-                self.setFill('red')
+                self.p.setFill('red')
             elif key == "y":
-                self.setFill('yellow')
+                self.p.setFill('yellow')
             elif key == "n":
-                self.setFill('brown')
+                self.p.setFill('brown')
             elif key == "g":
-                self.setFill('green')
+                self.p.setFill('green')
             elif key == "p":
-                self.setFill('pink')
+                self.p.setFill('pink')
             pass
 
 def main():
-
+    # Instructions
     condition = True
     while condition:
         message1 = Text(Point(500, 30), 'Press l to draw a Line, s to draw a Rectangle, c to draw a Circle, and p to draw a Polygon')
@@ -125,23 +130,36 @@ def main():
         message2.draw(win)
         message_c = Text(Point(500, 60), 'Then, press w for White, k for Black, b for Blue, r for Red, y for Yellow, n for Brown, g for Green, and p for pink')
         message_c.draw(win)
+
+        # Options to select and color a figure
         option = win.getKey() 
+
         if option == "l":
             c1 = win.getMouse()
             c2 = win.getMouse()
             line = ALine(c1, c2)
             line.drawing(win)
             line.color()
+
         elif option == "s":
              c1 = win.getMouse()
              c2 = win.getMouse()
              rectangle = ARectangle(c1, c2)
              rectangle.drawing(win)
              rectangle.color()
+
         elif option == "c":
              aCircle(win)
+
         elif option == "p":
-             aPolygon(win)
+             c1 = win.getMouse()
+             c2 = win.getMouse()
+             c3 = win.getMouse()
+             polygon = APolygon(c1, c2, c3)
+             polygon.drawing(win)
+             polygon.color()
+
+        # Ask user if he wishes to finish drawing or continue
         goodbye_m = Text(Point(500, 75), 'After drawing each figure, if you wish to continue drawing press 1 and proceed to do the same steps, if you wish to close the program press 0')
         goodbye_m.draw(win)
         goodbye_k = win.getKey()
