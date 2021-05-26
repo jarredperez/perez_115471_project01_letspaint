@@ -61,34 +61,35 @@ class ALine():
                 self.l.setOutline('pink')
             pass
 
-def ACircle(win):
-    c1 = win.getMouse()
-    x1 = c1.getX()
-    y1 = c1.getY()
-    radi_m = Text(Point(500, 85), 'Enter the radius of the circle on your terminal and hit enter')
-    radi_m.draw(win)
-    radius = int(input('Enter the radius of the circle'))
-    circ = Circle(Point(x1, y1), radius)
-    circ.draw(win)
-    color1 = win.getKey()
-    if color1 == "w":   
-        circ.setFill('white')
-    elif color1 == "k":
-        circ.setFill('black')
-    elif color1 == "b":
-        circ.setFill('blue')
-    elif color1 == "r": 
-        circ.setFill('red')
-    elif color1 == "y":
-        circ.setFill('yellow')
-    elif color1 == "n":
-        circ.setFill('brown')
-    elif color1 == "g":
-        circ.setFill('green')
-    elif color1 == "p":
-        circ.setFill('pink')
-    radi_m.undraw()
-    pass
+class ACircle():
+        def __init__(self, x1, y1, radius):
+            self.x1 = x1
+            self.y1 = y1
+            self.radius = radius
+
+        def drawing(self, w):
+            self.c = Circle(Point(self.x1, self.y1), self.radius)
+            self.c.draw(w)
+
+        def color(self):
+            key = win.getKey()
+            if key == "w":
+                self.c.setFill('white')
+            elif key == "k":
+                self.c.setFill('black')
+            elif key == "b":
+                self.c.setFill('blue')
+            elif key == "r":
+                self.c.setFill('red')
+            elif key == "y":
+                self.c.setFill('yellow')
+            elif key == "n":
+                self.c.setFill('brown')
+            elif key == "g":
+                self.c.setFill('green')
+            elif key == "p":
+                self.c.setFill('pink')
+            pass
 
 class APolygon():
         def __init__(self, c1, c2, c3):
@@ -149,7 +150,16 @@ def main():
              rectangle.color()
 
         elif option == "c":
-             aCircle(win)
+             c1 = win.getMouse()
+             x1 = c1.getX()
+             y1 = c1.getY()
+             radi_m = Text(Point(500, 85), 'Enter the radius of the circle on your terminal and hit enter')
+             radi_m.draw(win)
+             radius = int(input('Enter the radius of the circle'))
+             circle = ACircle(x1, y1, radius)
+             circle.drawing(win)
+             circle.color()
+             radi_m.undraw()
 
         elif option == "p":
              c1 = win.getMouse()
@@ -170,5 +180,5 @@ def main():
         goodbye_m.undraw()
     pass
 
-
-main()
+if __name__ == '__main__':
+    main()
