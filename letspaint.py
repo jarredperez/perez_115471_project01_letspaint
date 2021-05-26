@@ -1,54 +1,64 @@
 from graphics import *
+#Create graphical window
+win = GraphWin("Let's Paint", 1000, 1000)
+win.setBackground('light gray')
 
-def aRectangle(win):
-    c1 = win.getMouse()
-    c2 = win.getMouse()
-    rect = Rectangle(c1, c2)
-    rect.draw(win)
-    color1 = win.getKey()
-    if color1 == "w":
-        rect.setFill('white')
-    elif color1 == "k":
-        rect.setFill('black')
-    elif color1 == "b":
-        rect.setFill('blue')
-    elif color1 == "r":
-        rect.setFill('red')
-    elif color1 == "y":
-        rect.setFill('yellow')
-    elif color1 == "n":
-        rect.setFill('brown')
-    elif color1 == "g":
-        rect.setFill('green')
-    elif color1 == "p":
-        rect.setFill('pink')
-    pass
+class ARectangle():
+        def __init__(self, c1, c2):
+            self.c1 = c1
+            self.draw(win)
+    
+        def color(self):
+            key = win.getKey()
+            if key == "w":
+                self.setFill('white')
+            elif key == "k":
+                self.setFill('black')
+            elif key == "b":
+                self.setFill('blue')
+            elif key == "r":
+                self.setFill('red')
+            elif key == "y":
+                self.setFill('yellow')
+            elif key == "n":
+                self.setFill('brown')
+            elif key == "g":
+                self.setFill('green')
+            elif key == "p":
+                self.setFill('pink')
+            pass
 
-def aLine(win):
-    c1 = win.getMouse()
-    c2 = win.getMouse()
-    l = Line(c1, c2)
-    l.draw(win)
-    color1 = win.getKey()
-    if color1 == "w":
-        l.setOutline('white')
-    elif color1 == "k":
-        l.setOutline('black')
-    elif color1 == "b":
-        l.setOutline('blue')
-    elif color1 == "r":
-        l.setOutline('red')
-    elif color1 == "y":
-        l.setOutline('yellow')
-    elif color1 == "n":
-        l.setOutline('brown')
-    elif color1 == "g":
-        l.setFill('green')
-    elif color1 == "p":
-        l.setFill('pink')
-    pass
+class ALine():
+        def __init__(self, c1, c2):
+            self.c1 = c1
+            self.c2 = c2
+            
 
-def aCircle(win):
+        def drawing(self, w):
+            self.testing = Line(self.c1, self.c2)
+            self.testing.draw(w)
+            
+        def color(self):
+            key = win.getKey()
+            if key == "w":
+                self.testing.setOutline('white')
+            elif key == "k":
+                self.testing.setOutline('black')
+            elif key == "b":
+                self.testing.setOutline('blue')
+            elif key == "r":
+                self.testing.setOutline('red')
+            elif key == "y":
+                self.testing.setOutline('yellow')
+            elif key == "n":
+                self.testing.setOutline('brown')
+            elif key == "g":
+                self.testing.setOutline('green')
+            elif key == "p":
+                self.testing.setOutline('pink')
+            pass
+
+def ACircle(win):
     c1 = win.getMouse()
     x1 = c1.getX()
     y1 = c1.getY()
@@ -77,35 +87,33 @@ def aCircle(win):
     radi_m.undraw()
     pass
 
-def aPolygon(win):
-    c1 = win.getMouse()
-    c2 = win.getMouse()
-    c3 = win.getMouse()
-    poly = Polygon(c1, c2, c3)  
-    poly.draw(win)
-    color1 = win.getKey()
-    if color1 == "w":
-        poly.setFill('white')
-    elif color1 == "k":
-        poly.setFill('black')
-    elif color1 == "b":
-        poly.setFill('blue')
-    elif color1 == "r":
-        poly.setFill('red')
-    elif color1 == "y":
-        poly.setFill('yellow')
-    elif color1 == "n":
-        poly.setFill('brown')
-    elif color1 == "g":
-        poly.setFill('green')
-    elif color1 == "p":
-        poly.setFill('pink')
-    pass
+class APolygon():
+        def __init__(self, c1, c2, c3):
+            self.Polygon(c1, c2, c3)
+            self.draw(win)
+    
+        def color(self):
+            key = win.getKey()
+            if key == "w":
+                self.setFill('white')
+            elif key == "k":
+                self.setFill('black')
+            elif key == "b":
+                self.setFill('blue')
+            elif key == "r":
+                self.setFill('red')
+            elif key == "y":
+                self.setFill('yellow')
+            elif key == "n":
+                self.setFill('brown')
+            elif key == "g":
+                self.setFill('green')
+            elif key == "p":
+                self.setFill('pink')
+            pass
 
 def main():
-    #Create graphical window
-    win = GraphWin("Let's Paint", 1000, 1000)
-    win.setBackground('light gray')
+
     condition = True
     while condition:
         message1 = Text(Point(500, 30), 'Press l to draw a Line, s to draw a Rectangle, c to draw a Circle, and p to draw a Polygon')
@@ -116,13 +124,17 @@ def main():
         message_c.draw(win)
         option = win.getKey() 
         if option == "l":
-            aLine(win)
+            c1 = win.getMouse()
+            c2 = win.getMouse()
+            line = ALine(c1, c2)
+            line.drawing(win)
+            line.color()
         elif option == "s":
-            aRectangle(win)
+             aRectangle(win)
         elif option == "c":
-            aCircle(win)
+             aCircle(win)
         elif option == "p":
-            aPolygon(win)
+             aPolygon(win)
         goodbye_m = Text(Point(500, 75), 'After drawing each figure, if you wish to continue drawing press 1 and proceed to do the same steps, if you wish to close the program press 0')
         goodbye_m.draw(win)
         goodbye_k = win.getKey()
@@ -133,7 +145,5 @@ def main():
         goodbye_m.undraw()
     pass
 
-if __name__ == '__main__':
-    main()
 
- 
+main()
